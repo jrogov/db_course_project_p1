@@ -1,0 +1,7 @@
++ 1 BLOB column
+	photo@employees
++ 1 m2m relation
+	purchases o2m purchaseItem m2o products
++ 1 user type
+
++ 10 tables

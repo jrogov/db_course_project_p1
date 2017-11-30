@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6511778E-9F7E-060F-1A5A-B9CADFAD4E2E" name="stockItems">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:40:40 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_19</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="stocktId" id="71ED453C-2CEF-6C74-2FD0-D19192FE8D85">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:41:05 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5ABF76CC-44C6-9B86-140B-561210764048" referredColumn="300B2FD0-748B-BC69-DA3A-6B45E0005CB0"/>
+</associations>
+</Column>
+<Column name="productId" id="A4FFC14B-5174-7CC3-A51D-BAA3840EC870">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:41:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D9C544B9-CCB4-2AF7-3FEF-AA6B787587F3" referredColumn="83677D22-6A11-C903-DB2D-FE97220C0872"/>
+</associations>
+</Column>
+<Column name="count" id="4AF7C699-1DB8-0F99-37EF-34201E25A8E6">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:41:20 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="manufactureDate" id="DD8E527B-B3CA-E13D-CD4C-97A903D4BD88">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 15:00:10 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BB1D2DE3-C2AA-883D-4A68-638EEF3BFA2D" name="stockItems_PK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 15:00:10 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="71ED453C-2CEF-6C74-2FD0-D19192FE8D85"/>
+<colUsage columnID="A4FFC14B-5174-7CC3-A51D-BAA3840EC870"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CC4C0D04-80CC-9ADB-F5B0-9C6EE0C785EA" name="stockItems_stockChanges_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 15:00:10 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="71ED453C-2CEF-6C74-2FD0-D19192FE8D85"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F772F584-3A65-9756-25ED-C373048AFA38" name="stockItems_products_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 15:00:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4FFC14B-5174-7CC3-A51D-BAA3840EC870"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

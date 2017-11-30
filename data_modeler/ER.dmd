@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ER" id="37BB6447-A1AB-D6CA-52FB-434670204D81" version="3.5">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:26:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>37BB6447-A1AB-D6CA-52FB-434670204D81</designId>
+</OSDM_Design>

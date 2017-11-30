@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7478C2F6-3ED4-BEB8-5296-FB430A074883" name="productType">
+<createdBy>rinco</createdBy>
+<createdTime>2017-11-30 11:20:09 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_16</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="productTypeId" id="7EFE6E7C-E142-92C7-FFC4-E4CE0DE0A1E3">
+<createdBy>rinco</createdBy>
+<createdTime>2017-11-30 11:21:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="typeName" id="608F24ED-3B4C-B252-0AD0-575BE16CD50C">
+<createdBy>rinco</createdBy>
+<createdTime>2017-11-30 11:22:12 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E82B73CD-E166-5785-0941-D4075F6DDEB2" name="productType_PK">
+<createdBy>rinco</createdBy>
+<createdTime>2017-11-30 11:21:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7EFE6E7C-E142-92C7-FFC4-E4CE0DE0A1E3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

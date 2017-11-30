@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EA1E51A3-D450-86C2-7526-FFC971ABECE2" name="purchases">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:19:07 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="purchaseId" id="45385C67-6B04-4FB4-2AEF-FC5935C3A18B">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:20:24 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shopId" id="22DD464D-EFEB-1829-A3F8-D22015A4844C">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:20:55 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D1F05663-88BC-CC77-B5CB-30E4659B3E5A" referredColumn="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4"/>
+</associations>
+</Column>
+<Column name="cassierId" id="DBC8F923-38F4-2A54-9274-AA0EFD3EBCC6">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:21:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="72B84D3E-1107-E09B-E88A-0852D520B263" referredColumn="083A3232-0131-4CDB-1BA9-FBECF1ED9EC6"/>
+</associations>
+</Column>
+<Column name="date" id="668149D0-952C-7A3D-675A-EC8B1A9FE82C">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:49:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CC804C4D-53E8-0D2E-10AC-2C4E9C17A8CB" name="purchases_PK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:20:24 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45385C67-6B04-4FB4-2AEF-FC5935C3A18B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="59E0824A-6891-8CE6-9B1B-AC1581B244C6" name="purchases_products_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:22:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22DD464D-EFEB-1829-A3F8-D22015A4844C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D443DC58-FC60-D526-D822-86C9CE972497" name="purchases_employees_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 13:22:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DBC8F923-38F4-2A54-9274-AA0EFD3EBCC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

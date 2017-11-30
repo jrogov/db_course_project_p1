@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A5177195-69D4-12D2-8509-AB96C706A10B" name="stockChanges">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:30:25 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="stockId" id="300B2FD0-748B-BC69-DA3A-6B45E0005CB0">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:31:50 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shopId" id="7248E7A4-274A-BB0B-3773-22C68C84DD45">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:32:58 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0DF5F45A-4D1D-A696-18EB-731D2F9B548C" referredColumn="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4"/>
+</associations>
+</Column>
+<Column name="date" id="35B3051B-3A2D-CE1D-A9EA-61C44622716B">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:37:21 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="252B6582-2619-85BA-A644-6636E4050A87" name="shipments_PK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:31:50 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="300B2FD0-748B-BC69-DA3A-6B45E0005CB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6CE8CDF8-5269-F32C-3C90-D41D6A583FF6" name="shipments_shops_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:38:52 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7248E7A4-274A-BB0B-3773-22C68C84DD45"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

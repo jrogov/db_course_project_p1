@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8A4B9919-7283-FB98-AC5E-82D1A51514E1" containerWithKeyObject="ABAD2258-E0F7-1463-FF5A-963F8EA101FF" localFKIndex="AB5D4538-60EE-1573-9934-EB9119260B97" name="hireHistory_shops_FK">
+<createdBy>rinco</createdBy>
+<createdTime>2017-11-30 09:04:36 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>shops</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1B16B6C1-7CAC-AB55-CB6E-D88F7D3285A6</referredTableID>
+<keyObject>FFD4D8C2-61D4-4C1F-D57C-BE6A67143C4C</keyObject>
+<referredKeyID>FFD4D8C2-61D4-4C1F-D57C-BE6A67143C4C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>shopId</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

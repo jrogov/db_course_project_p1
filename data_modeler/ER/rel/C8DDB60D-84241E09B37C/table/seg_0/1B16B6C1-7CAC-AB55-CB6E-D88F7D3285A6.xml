@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B16B6C1-7CAC-AB55-CB6E-D88F7D3285A6" name="shops">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:49:45 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="shopId" id="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:51:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="046EA732-C7A7-0EDB-8450-7AFD1757A6BC">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:51:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address" id="8F3FB927-DCB7-2143-2AAA-2651408CC28E">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:51:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="8D705C06-C079-7A29-817A-88B44457113D">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:57:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<ownDataTypeParameters>,12,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FFD4D8C2-61D4-4C1F-D57C-BE6A67143C4C" name="shops_PK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 12:51:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

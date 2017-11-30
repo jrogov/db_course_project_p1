@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D0347CF8-9E0C-A068-6AED-75E9D83B7A89" name="salaries">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:29:01 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<ordsAlias>table_16</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="jobId" id="630FA380-2E3F-A57F-224A-09F801FBD8C7">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:29:24 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ACBC0C64-29CD-836B-BF12-5F63D0FBEE74" referredColumn="97D152B3-80E3-B934-9810-0F8FBE1AFAB3"/>
+</associations>
+</Column>
+<Column name="shopId" id="188687AA-7F90-18D3-447F-A1F868D49341">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:29:24 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="13B2DD52-D4BA-1378-A9A1-9F0CCC6FADA9" referredColumn="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4"/>
+</associations>
+</Column>
+<Column name="salary" id="933F62F7-1A8D-B7E0-BEE9-21CC23C584C8">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:29:41 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT043</logicalDatatype>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="083BCDF3-9822-0032-8A61-CE6A1DDA61DB" name="salaries_PK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:30:12 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="630FA380-2E3F-A57F-224A-09F801FBD8C7"/>
+<colUsage columnID="188687AA-7F90-18D3-447F-A1F868D49341"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E086900E-B539-D461-99D5-5FF31675C52B" name="salaries_jobs_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:30:12 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="630FA380-2E3F-A57F-224A-09F801FBD8C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="878E57ED-EBCF-29EB-8AD1-AA53233097F7" name="salaries_shops_FK">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-13 14:30:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="188687AA-7F90-18D3-447F-A1F868D49341"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="salaries_CK_1" directorySegmentName="seg_0" id="9979EC0F-78A7-B1D1-2D66-6D96C1FE403D">
+<createdBy>Piston</createdBy>
+<createdTime>2017-11-14 16:23:33 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<rule>salary &gt; 0</rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>
