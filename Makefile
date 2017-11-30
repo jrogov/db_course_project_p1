@@ -1,18 +1,29 @@
-SQL = slqplus
+SQL = sqlplus
 SED = gsed
 
 define Ssql
 
+set serverout on
+
+column h heading ''
+select '======== DROPPING PREVIOUS TABLES ========' h from dual;
+@drop
+select '============ BUILDING SCHEMA =============' h from dual;
 @schema.ddl
--- @create_package
--- @create_body
+select '============ CREATING PACKAGE ============' h from dual;
+@create_package
+select '========= CREATING PACKAGE BODY ==========' h from dual;
+@create_body
 -- @tests
+
+exit;
 
 endef
 export Ssql
 
 
-SCHEMA_FILES = schema_base.ddl
+MAKEFILE = Makefile
+SCHEMA_FILES = schema_base.ddl schema.ddl
 CREATESCHEMA = schema.ddl
 
 DROPFILE = drop.sql
@@ -24,19 +35,21 @@ TARGET = s.sql
 
 all: $(TARGET)
 
-$(TARGET): fix_schema
+$(TARGET): $(DROPFILE) Makefile
 
 	@echo Creating s.sql
 	@echo "$${Ssql}" > $(TARGET)
 
-drop:
+drop: $(DROPFILE)
+
+$(DROPFILE): $(SCHEMA_FILES)
 	$(SED) -n \
-	-e '/^CREATE TABLE/{ s/CREATE/DROP/; s/ (/;/ ; p; }' \
+	-e '/^CREATE TABLE/{ s/CREATE/DROP/; s/ (/ cascade constraints;/ ; p; }' \
 	-e '/^CREATE SEQUENCE/{ s/CREATE/DROP/; s/ START.*$$/;/; p; }' \
 	$(SCHEMA_FILES) | \
 	perl -e 'print reverse <>' \
 	> $(DROPFILE)
-	echo "exit" >> $(DROPFILE)
+	# echo "exit" >> $(DROPFILE)
 
 
 
@@ -45,6 +58,8 @@ drop:
 # 	$(SED) \
 # 	-e 's/CREATE TABLE/DROP TABLE/' $(SCHEMA2FIX)
 
-clean: FORCE
-	rm -f $(TARGET)
+.PHONY: clean
+
+clean:
+	rm -f $(TARGET) $(DROPFILE)
 
