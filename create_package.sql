@@ -1,68 +1,34 @@
 CREATE OR REPLACE PACKAGE fivey AS
 
--- EMPLOYEES
+	PROCEDURE create_employee(lname IN VARCHAR2, fname IN VARCHAR2, mname IN VARCHAR2, bdate IN DATE, hdate in DATE, p in BLOB, ph in NUMBER, email IN VARCHAR2);
 
-	PROCEDURE add_employee(
-		/**/
-		);
+	PROCEDURE hire_employee(eid IN INTEGER, jid IN INTEGER, sid IN INTEGER, hdate IN DATE);
+	PROCEDURE fire_employee(eid IN INTEGER, reason in VARCHAR2);
 
+	PROCEDURE create_job(t IN VARCHAR2, s IN NUMBER);
+	PROCEDURE update_job_salary(id IN INTEGER, s IN NUMBER);
 
-	PROCEDURE hire_employee( employeeId );
-	FUNCTION show_hiring( employeeId ); -- return table of employee positions. How?
-	PROCEDURE fire_employee_from_job( hireId );
-	PROCEDURE fire_employee( employeeId );
+	PROCEDURE create_shop(n IN VARCHAR2, a IN VARCHAR2, p IN VARCHAR2);
+	PROCEDURE delete_shop(id IN INTEGER);
 
+	PROCEDURE create_purchase(sid IN INTEGER, cid IN INTEGER);
+	PROCEDURE create_purchase_item(id IN INTEGER, pid IN INTEGER, c IN INTEGER);
+	PROCEDURE delete_purchase_item(id IN INTEGER, pid IN INTEGER);
+	PROCEDURE finalize_purchase(id IN INTEGER);
 
-	-- eh? merge jobs and salaries?
-	-- PROCEDURE add_job()
-	-- PROCEDURE
+	PROCEDURE create_product(name IN VARCHAR2, sid IN INTEGER, price IN NUMBER, shelfLife IN NUMBER, ptid IN INTEGER);
+	PROCEDURE delete_product(id IN INTEGER);
+	PROCEDURE update_product_price(id IN INTEGER, p IN NUMBER);
 
+	PROCEDURE create_stock_change(sid IN INTEGER);
+	PROCEDURE create_stock_change_item(sid IN INTEGER, pid IN INTEGER, c IN INTEGER, mdate IN DATE);
+	PROCEDURE delete_stock_change_item(sid IN INTEGER, pid IN INTEGER);
 
--- PURCHASES
-
-	FUNCTION register_purchase() RETURN INTEGER;
-
-	PROCEDURE add_purchase_item( purchaseId );
-
-	PROCEDURE update_stock( shopId, purchaseId );
-
-
-	-- how do we lock purchaseId so noone can add items to it? All in one commit?,
-	-- e.g. Press button = register_purchase, Press cancel = delete purchase
-	--		Scan item - add to purchaseItem, or delete it otherwise
-	-- flow: register_purchase -> N x add_purchase_item -> update_stock (and check constraints, non-negative stockItems and so on)
+	PROCEDURE create_supplier(name IN VARCHAR2, address IN VARCHAR2, phone IN NUMBER, email IN VARCHAR2);
+	PROCEDURE update_supplier(id IN INTEGER, n IN VARCHAR2, a IN VARCHAR2, ph IN NUMBER, e IN VARCHAR2);
 
 
--- PRODUCTS
+END fivey;
+/
 
-	PROCEDURE add_product(
-		/* params */
-		)
-
-	FUNCTION add_productType( typeName IN VARCHAR(50) )
-
-
-
-
-
--- SHOPS
-
-	PROCEDURE add_shop()
-	PROCEDURE delete_shop_by_name( name );
-
-
-
--- STOCK
-
-	FUNCTION add_stock(shopId, date) RETURN INTEGER;
-
-	PROCEDURE fill_stock(
-		stockId, productId, count, manufactureDate
-		)
-
-
--- SUPPLIERS
-
-	FUNCTION add_supplier( /**/ ) RETURN INTEGER;
-	PROCEDURE modify_supplier( /**/ );
-	PROCEDURE delete_supplier( /**/ );
+show errors;
