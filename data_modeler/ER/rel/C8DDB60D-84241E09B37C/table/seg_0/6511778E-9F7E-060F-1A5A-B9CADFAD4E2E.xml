@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="stocktId" id="71ED453C-2CEF-6C74-2FD0-D19192FE8D85">
+<Column name="stockId" id="71ED453C-2CEF-6C74-2FD0-D19192FE8D85">
 <createdBy>Piston</createdBy>
 <createdTime>2017-11-13 14:41:05 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
@@ -28,7 +28,7 @@
 <ownerDesignName>ER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

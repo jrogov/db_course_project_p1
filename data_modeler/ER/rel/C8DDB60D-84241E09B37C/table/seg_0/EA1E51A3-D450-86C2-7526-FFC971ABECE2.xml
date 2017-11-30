@@ -45,7 +45,7 @@
 <colAssociation fkAssociation="72B84D3E-1107-E09B-E88A-0852D520B263" referredColumn="083A3232-0131-4CDB-1BA9-FBECF1ED9EC6"/>
 </associations>
 </Column>
-<Column name="date" id="668149D0-952C-7A3D-675A-EC8B1A9FE82C">
+<Column name="purchaseDate" id="668149D0-952C-7A3D-675A-EC8B1A9FE82C">
 <createdBy>Piston</createdBy>
 <createdTime>2017-11-13 13:49:13 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>

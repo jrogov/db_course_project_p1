@@ -31,7 +31,7 @@
 <colAssociation fkAssociation="0DF5F45A-4D1D-A696-18EB-731D2F9B548C" referredColumn="868D70A8-E7CE-733F-F5E3-2AF8A9AD19E4"/>
 </associations>
 </Column>
-<Column name="date" id="35B3051B-3A2D-CE1D-A9EA-61C44622716B">
+<Column name="arrivalDate" id="35B3051B-3A2D-CE1D-A9EA-61C44622716B">
 <createdBy>Piston</createdBy>
 <createdTime>2017-11-13 14:37:21 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
