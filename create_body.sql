@@ -17,6 +17,25 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 		);
 	END create_employee;
 
+	PROCEDURE update_employee_name(empId IN INTEGER, lname IN VARCHAR2, fname IN VARCHAR2, mname IN VARCHAR2)
+	IS BEGIN
+		UPDATE employees
+		SET
+			lastName = lname,
+			firstName = fname,
+			middleName = mname
+		WHERE employeeId = empId;
+		/* l/f/mnamme null insertion exception? */
+
+	END update_employee_name;
+
+	PROCEDURE update_employee_photo(empId IN INTEGER, p IN BLOB)
+	IS BEGIN
+		UPDATE employees
+		SET
+			photo = p
+		WHERE employeeId = empId;
+	END update_employee_photo;
 
 
 
@@ -218,7 +237,72 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 	END delete_stock_change_item;
 
 
+	FUNCTION get_shop_stock(shopId IN INTEGER) RETURN stock_report_t
+	IS
+		res stock_report_t;
+		i BINARY_INTEGER := 0;
+	BEGIN
+		FOR report_record IN
+			(SELECT productId, SUM(count) FROM
+				(
+					SELECT stockItems.productId productId, SUM(stockItems.count) "count"
+					FROM stockItems
+					GROUP BY stockItems.productId
+					WHERE stockItems.shopId = shopId
+					
+					UNION
+					
+					SELECT purchaseItems.productId productId, -SUM(productItems.count) OVER (PARTITION BY purchaseItems.productId) "count"
+					FROM
+					(
+						SELECT * FROM purchaseItems 
+						WHERE purchaseItems.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId)
+					)
+					GROUP BY purchaseItems.productId
+				)
+				GROUP BY productId
+			)
+		LOOP
+			i := i + 1;
+			res(i).productId := report_record.productId;
+			res(i).count := report_record.count;
+		END LOOP;
+		RETURN res;
+	END get_shop_stock;
 
+	FUNCTION get_purchase_items_by_shop(shopId IN INTEGER) RETURN purchase_items_t
+	IS
+		res purchase_items_t;
+		i BINARY_INTEGER := 0;
+	BEGIN
+		FOR purchase_item IN (SELECT * FROM purchaseItems 
+						WHERE purchaseItems.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId))
+		LOOP
+			i := i + 1;
+			res(i) := purchase_item;
+		END LOOP;
+		RETURN res;
+	END get_purchase_items_by_shop;
+
+
+	PROCEDURE update_product_description(id IN INTEGER, descr IN CLOB, phot IN BLOB)
+	IS
+	BEGIN
+		UPDATE products
+		SET
+			description = ProductDescriptionType(phot, descr)
+		WHERE productId = id;
+	END update_product_description;
+
+	FUNCTION get_product_photo(id IN INTEGER) RETURN BLOB
+	IS
+		ProductDescriptionType descr;
+		res BLOB;
+	BEGIN
+		descr := (SELECT description FROM products WHERE productId = id);
+		res := descr.photo;
+		RETURN res;
+	END get_product_photo;
 
 	PROCEDURE create_supplier(name IN VARCHAR2, address IN VARCHAR2, phone IN NUMBER, email IN VARCHAR2)
 	IS

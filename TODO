@@ -1,25 +1,6 @@
-CRUD operations:
-
-PURCHASES:
-
-	register_purchase()
-	add_purchase_item(purchaseId)
-	update_stock(shopId, purchaseId)
-
-
-	// how do we lock purchaseId so noone can add items to it? All in one commit?,
-	// e.g. Press button = register_purchase, Press cancel = delete purchase
-	//		Scan item - add to purchaseItem, or delete it otherwise
-	// flow: register_purchase -> N x add_purchase_item -> update_stock (and check constraints, non-negative stockItems and so on)
-
-
-EMPLOYEES:
-
-	add_employee( /* all their data, except (auto-generated) Id */ )
-	hire_employee( employeeId )
-	fire_employee_from_job( jobId )
-	fire_employee( employeeId ) // the same but fire them from EVERY job
-
-SUPPLIERS:
-	add_supplier(...)
-	update_supplier(...) //no delete tho
+- MORE CRUD
+- Не менее 2х функций/процедуры должны обеспечивать обработку данных в нескольких таблицах.
+- Пользовательский тип данных должен включать не менее 2х полей и 1 метод для работы
+с этими полями.
+- Test Data Generation
+- Tests
