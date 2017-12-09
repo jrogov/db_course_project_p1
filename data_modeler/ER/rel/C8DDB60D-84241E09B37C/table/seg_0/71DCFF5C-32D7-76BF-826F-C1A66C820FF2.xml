@@ -113,6 +113,24 @@
 <colUsage columnID="83677D22-6A11-C903-DB2D-FE97220C0872"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="4EFEBFA9-6ADC-9844-78CB-D22F65BC0787" name="products__IDX_sid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 10:57:45 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EF8B18FE-E6B0-277A-E8D9-1E75B734152E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9EFC1E75-07D3-573C-CBB5-FD17BEF8C438" name="products__IDX_ptid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 11:59:06 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F8726CAF-0BB5-30E9-1D39-C8397925F125"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="7CBF8022-4B09-1C29-4CF9-4C7D99A409F9" name="products_suppliers_FK">
 <createdBy>Piston</createdBy>
 <createdTime>2017-11-13 12:56:21 UTC</createdTime>

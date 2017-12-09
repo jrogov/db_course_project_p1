@@ -16,6 +16,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="employeeId" id="283EBFA9-4805-0728-817F-8284B2FE3EDE">
@@ -101,6 +102,34 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1FD6DCDD-9395-7EDB-503B-24385764519F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="26F89DD9-955A-24EB-D1BB-6B0ACA2206E9" name="hireHistory__IDX_eid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:01:35 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="283EBFA9-4805-0728-817F-8284B2FE3EDE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="55C37C8F-D23C-FFBF-FA62-2EC78ECC0E6A" name="hireHistory__IDX_jid_sid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:01:35 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C1E40CA-FD06-9DC9-B0E8-B5624BB54F1D"/>
+<colUsage columnID="46862795-214D-C6FE-D236-A7568AF794BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AD2722A8-48ED-777D-4967-00952073D8A1" name="hireHistory__IDX_sid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:01:35 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46862795-214D-C6FE-D236-A7568AF794BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="ED5B1AD7-92B7-F617-3515-0B8454B8AA8F" name="hireHistory_employees_FK">

@@ -69,6 +69,25 @@
 <colUsage columnID="45385C67-6B04-4FB4-2AEF-FC5935C3A18B"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="87F7A48B-C604-4AFB-6405-4A9BEDAD1D64" name="purchases__IDX_sid_cid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:03:42 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22DD464D-EFEB-1829-A3F8-D22015A4844C"/>
+<colUsage columnID="DBC8F923-38F4-2A54-9274-AA0EFD3EBCC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="346D8FDD-B5DC-E109-D439-023414446757" name="purchases__IDX_cid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:03:42 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DBC8F923-38F4-2A54-9274-AA0EFD3EBCC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="59E0824A-6891-8CE6-9B1B-AC1581B244C6" name="purchases_products_FK">
 <createdBy>Piston</createdBy>
 <createdTime>2017-11-13 13:22:49 UTC</createdTime>

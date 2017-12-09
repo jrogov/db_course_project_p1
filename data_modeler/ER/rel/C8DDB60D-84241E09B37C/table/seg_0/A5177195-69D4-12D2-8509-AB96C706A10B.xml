@@ -16,6 +16,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="shopId" id="7248E7A4-274A-BB0B-3773-22C68C84DD45">
@@ -53,6 +54,15 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="300B2FD0-748B-BC69-DA3A-6B45E0005CB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B8E14EBA-94CA-777C-2E9C-1BF6E7E60280" name="stockChanges__IDX_shopid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:00:14 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7248E7A4-274A-BB0B-3773-22C68C84DD45"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="6CE8CDF8-5269-F32C-3C90-D41D6A583FF6" name="shipments_shops_FK">

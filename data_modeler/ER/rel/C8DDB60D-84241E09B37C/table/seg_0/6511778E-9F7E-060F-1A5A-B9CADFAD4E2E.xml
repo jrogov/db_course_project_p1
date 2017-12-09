@@ -16,7 +16,6 @@
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="5ABF76CC-44C6-9B86-140B-561210764048" referredColumn="300B2FD0-748B-BC69-DA3A-6B45E0005CB0"/>
@@ -68,6 +67,15 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="71ED453C-2CEF-6C74-2FD0-D19192FE8D85"/>
+<colUsage columnID="A4FFC14B-5174-7CC3-A51D-BAA3840EC870"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8AC4352D-ECF1-C992-2730-E5DD5F809D37" name="stockItems__IDX_pid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 11:59:44 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
 <colUsage columnID="A4FFC14B-5174-7CC3-A51D-BAA3840EC870"/>
 </indexColumnUsage>
 </ind_PK_UK>

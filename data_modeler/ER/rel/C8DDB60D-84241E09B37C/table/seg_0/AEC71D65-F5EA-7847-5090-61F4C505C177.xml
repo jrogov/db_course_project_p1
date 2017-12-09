@@ -27,7 +27,7 @@
 <ownerDesignName>ER</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -56,6 +56,15 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="2CA40301-10F3-0E97-0623-98C6928DBA5E"/>
+<colUsage columnID="DFDB2329-5480-8C53-0109-474CA7A44DAF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AC705768-44DB-F1D5-7F54-575E0247D674" name="purchaseItem__IDX_prodid">
+<createdBy>rinco</createdBy>
+<createdTime>2017-12-09 12:02:30 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
 <colUsage columnID="DFDB2329-5480-8C53-0109-474CA7A44DAF"/>
 </indexColumnUsage>
 </ind_PK_UK>
