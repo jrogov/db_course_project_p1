@@ -1,7 +1,9 @@
 CREATE OR REPLACE PACKAGE BODY fivey AS
 
-	PROCEDURE create_employee(lname IN VARCHAR2, fname IN VARCHAR2, mname IN VARCHAR2, bdate IN DATE, hdate in DATE, p in BLOB, ph in NUMBER, email IN VARCHAR2)
+	FUNCTION create_employee(lname IN VARCHAR2, fname IN VARCHAR2, mname IN VARCHAR2, bdate IN DATE, hdate in DATE, p in BLOB, ph in NUMBER, email IN VARCHAR2)
+	RETURN INTEGER
 	IS
+		empId INTEGER;
 	BEGIN
 		INSERT INTO employees
 		VALUES (
@@ -14,7 +16,8 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			p,
 			ph,
 			email
-		);
+		) RETURNING employeeId INTO empId;
+		RETURN empId;
 	END create_employee;
 
 	PROCEDURE update_employee_name(empId IN INTEGER, lname IN VARCHAR2, fname IN VARCHAR2, mname IN VARCHAR2)
@@ -39,8 +42,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 
 
-	PROCEDURE hire_employee(eid IN INTEGER, jid IN INTEGER, sid IN INTEGER, hdate IN DATE)
+	FUNCTION hire_employee(eid IN INTEGER, jid IN INTEGER, sid IN INTEGER, hdate IN DATE)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO hireHistory
 		VALUES (
@@ -51,7 +56,8 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			hdate,
 			null,
 			null
-		);
+		) RETURNING hireId INTO returnId;
+		RETURN returnId;
 	END hire_employee;
 
 	PROCEDURE fire_employee(eid IN INTEGER, reason in VARCHAR2)
@@ -67,15 +73,18 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 
 
-	PROCEDURE create_job(t IN VARCHAR2, s IN NUMBER)
+	FUNCTION create_job(t IN VARCHAR2, s IN NUMBER)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO jobs
 		VALUES (
 			null,
 			t,
 			s
-		);
+		) RETURNING jobId INTO returnId;
+		RETURN returnId;
 	END create_job;
 
 	PROCEDURE update_job_salary(id IN INTEGER, s IN NUMBER)
@@ -90,8 +99,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 
 
-	PROCEDURE create_shop(n IN VARCHAR2, a IN VARCHAR2, p IN VARCHAR2)
+	FUNCTION create_shop(n IN VARCHAR2, a IN VARCHAR2, p IN VARCHAR2)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO shops
 		VALUES (
@@ -99,7 +110,8 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			n,
 			a,
 			p
-		);
+		) RETURNING shopId INTO returnId;
+		RETURN returnId;
 	END create_shop;
 
 	PROCEDURE delete_shop(id IN INTEGER)
@@ -110,10 +122,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 	END delete_shop;
 
 
-
-
-	PROCEDURE create_purchase(sid IN INTEGER, cid IN INTEGER)
+	FUNCTION create_purchase(sid IN INTEGER, cid IN INTEGER)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO purchases
 		VALUES (
@@ -121,12 +133,14 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			sid,
 			cid,
 			null
-		);
+		) RETURNING purchaseId INTO returnId;
+		RETURN returnId;
 	END create_purchase;
 
 	PROCEDURE create_purchase_item(id IN INTEGER, pid IN INTEGER, c IN INTEGER)
 	IS
 		pdate purchases.purchaseDate%type;
+		oldcount purchaseItem.count%type;
 	BEGIN
 		SELECT purchaseDate INTO pdate FROM purchases WHERE purchaseId = id;
 		IF ( pdate IS NULL ) THEN
@@ -139,6 +153,11 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 		EXCEPTION
 			WHEN NO_DATA_FOUND THEN
 				raise_application_error(-20404, 'No purchase with such id found');
+			WHEN DUP_VAL_ON_INDEX THEN
+				BEGIN
+					SELECT count INTO oldcount FROM purchaseItem WHERE purchaseId = id AND productId = pid;
+					UPDATE purchaseItem SET count = oldcount + c WHERE purchaseId = id AND productId = pid;
+				END;
 
 	END create_purchase_item;
 
@@ -172,8 +191,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 
 	-- null instead of product description object?
-	PROCEDURE create_product(name IN VARCHAR2, sid IN INTEGER, price IN NUMBER, shelfLife IN NUMBER, ptid IN INTEGER)
+	FUNCTION create_product(name IN VARCHAR2, sid IN INTEGER, price IN NUMBER, shelfLife IN NUMBER, ptype IN INTEGER, descr IN ProductDescriptionType)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO products
 		VALUES (
@@ -182,9 +203,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			sid,
 			price,
 			shelfLife,
-			ptid,
-			null
-		);
+			ptype,
+			descr
+		) RETURNING productId INTO returnId;
+		RETURN returnId;
 	END create_product;
 
 	PROCEDURE update_product_price(id IN INTEGER, p IN NUMBER)
@@ -241,32 +263,26 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 	IS
 		res stock_report_t;
 		i BINARY_INTEGER := 0;
+		CURSOR c1 IS
+			SELECT shopStock.productId "productId", SUM(shopStock.count) OVER (PARTITION BY shopStock.productId) "count"
+			FROM (
+				SELECT * FROM stockItems
+				WHERE stockItems.stockId IN (SELECT stockChanges.stockId FROM stockChanges WHERE stockChanges.shopId = shopId)
+			) shopStock
+			UNION
+			SELECT shopPurchases.productId "productId", -1 * SUM(shopPurchases.count) OVER (PARTITION BY shopPurchases.productId) "count"
+			FROM (
+				SELECT * FROM purchaseItem
+				WHERE purchaseItem.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId)
+			) shopPurchases;
 	BEGIN
-		FOR report_record IN
-			(SELECT productId, SUM(count) FROM
-				(
-					SELECT stockItems.productId productId, SUM(stockItems.count) "count"
-					FROM stockItems
-					GROUP BY stockItems.productId
-					WHERE stockItems.shopId = shopId
-					
-					UNION
-					
-					SELECT purchaseItems.productId productId, -SUM(productItems.count) OVER (PARTITION BY purchaseItems.productId) "count"
-					FROM
-					(
-						SELECT * FROM purchaseItems 
-						WHERE purchaseItems.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId)
-					)
-					GROUP BY purchaseItems.productId
-				)
-				GROUP BY productId
-			)
+		OPEN c1;
 		LOOP
 			i := i + 1;
-			res(i).productId := report_record.productId;
-			res(i).count := report_record.count;
+			FETCH c1 INTO res(i);
+			EXIT WHEN c1%NOTFOUND;
 		END LOOP;
+		CLOSE c1;
 		RETURN res;
 	END get_shop_stock;
 
@@ -274,16 +290,19 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 	IS
 		res purchase_items_t;
 		i BINARY_INTEGER := 0;
+		CURSOR c1 IS
+			SELECT purchaseId, productId, count FROM purchaseItem
+			WHERE purchaseItem.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId);
 	BEGIN
-		FOR purchase_item IN (SELECT * FROM purchaseItems 
-						WHERE purchaseItems.purchaseId IN (SELECT purchases.purchaseId FROM purchases WHERE purchases.shopId = shopId))
+		OPEN c1;
 		LOOP
 			i := i + 1;
-			res(i) := purchase_item;
+			FETCH c1 INTO res(i);
+			EXIT WHEN c1%NOTFOUND;
 		END LOOP;
+		CLOSE C1;
 		RETURN res;
 	END get_purchase_items_by_shop;
-
 
 	PROCEDURE update_product_description(id IN INTEGER, descr IN CLOB, phot IN BLOB)
 	IS
@@ -296,16 +315,18 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 	FUNCTION get_product_photo(id IN INTEGER) RETURN BLOB
 	IS
-		ProductDescriptionType descr;
+		descr ProductDescriptionType;
 		res BLOB;
 	BEGIN
-		descr := (SELECT description FROM products WHERE productId = id);
+		SELECT description INTO descr FROM products WHERE productId = id;
 		res := descr.photo;
 		RETURN res;
 	END get_product_photo;
 
-	PROCEDURE create_supplier(name IN VARCHAR2, address IN VARCHAR2, phone IN NUMBER, email IN VARCHAR2)
+	FUNCTION create_supplier(name IN VARCHAR2, address IN VARCHAR2, phone IN NUMBER, email IN VARCHAR2)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO suppliers
 		VALUES (
@@ -314,7 +335,8 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 		,	address
 		,	phone
 		,	email
-		);
+		) RETURNING supplierId INTO returnId;
+		RETURN returnId;
 	END create_supplier;
 
 	PROCEDURE update_supplier(id IN INTEGER, n IN VARCHAR2, a IN VARCHAR2, ph IN NUMBER, e IN VARCHAR2)
@@ -328,6 +350,19 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 			email = e
 		WHERE supplierId = id;
 	END update_supplier;
+
+	FUNCTION create_product_type(name IN VARCHAR2)
+	RETURN INTEGER
+	IS
+		returnId INTEGER;
+	BEGIN
+		INSERT INTO productType
+		VALUES (
+			null,
+			name
+		) RETURNING productTypeId INTO returnId;
+		RETURN returnId;
+	END create_product_type;
 
 END fivey;
 /
