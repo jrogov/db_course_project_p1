@@ -1,3 +1,6 @@
+# Great, are you happy?
+# Do not check generate_data folder, noone can UNSEE this mess
+
 SQL = sqlplus
 SED = gsed
 
