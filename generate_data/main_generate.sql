@@ -58,6 +58,11 @@ DECLARE
 	productId INTEGER;
 	productCount INTEGER;
 
+	stockChangeId INTEGER;
+	stockChangeItemCount INTEGER;
+
+	baseDate DATE;
+
 	-- GENERATION PARAMS
 
 	emp_num INTEGER := 50;
@@ -65,6 +70,8 @@ DECLARE
 	product_per_purchases_max INTEGER := 10;
 	max_products_per_purchase INTEGER := 10;
 	stockChanges_num INTEGER := 50;
+	max_products_per_stockchange INTEGER := 10;
+	max_products_count_per_sc INTEGER := 10;
 
 	productDescription ProductDescriptionType;
 
@@ -234,7 +241,33 @@ BEGIN
 
 		fivey.finalize_purchase(purchaseId);
 	END LOOP;
+
 	-- STOCKCHANGES AND STOCKITEMS
+	DBMS_OUTPUT.PUT_LINE('FOR i in 1..stockChanges_num');
+	FOR i in 1..stockChanges_num
+	LOOP
+
+		shopId := shops_ids(RAND_INT(shops_ids.first, shops_ids.last));
+		stockChangeId := fivey.create_stock_change(shopId);
+
+		stockChangeItemCount := RAND_INT(1, max_products_per_stockchange);
+
+		baseDate := SYSDATE - 30 * RAND_INT(1, 120);
+
+		-- Unique constraint for stockitems: should track collisions of product_ids, but too lazy
+		-- FOR item_num in 1..stockChangeItemCount
+		-- LOOP
+
+			fivey.create_stock_change_item(
+				stockChangeId,
+				products_ids(RAND_INT(products_ids.first, products_ids.last)),
+				RAND_INT(1, max_products_count_per_sc),
+				baseDate - RAND_INT(1,30)
+				);
+
+		-- END LOOP;
+ 		END LOOP;
+
 
 END;
 /
