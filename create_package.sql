@@ -23,12 +23,11 @@ CREATE OR REPLACE PACKAGE fivey AS
 	PROCEDURE delete_product(id IN INTEGER);
 	PROCEDURE update_product_price(id IN INTEGER, p IN NUMBER);
 
-	PROCEDURE create_stock_change(sid IN INTEGER);
+	FUNCTION create_stock_change(sid IN INTEGER) RETURN INTEGER;
 	PROCEDURE create_stock_change_item(sid IN INTEGER, pid IN INTEGER, c IN INTEGER, mdate IN DATE);
 	PROCEDURE delete_stock_change_item(sid IN INTEGER, pid IN INTEGER);
 
 	TYPE stock_report_record_t IS RECORD ( productId INTEGER, count INTEGER );
-	TYPE stock_report_t IS TABLE OF stock_report_record_t INDEX BY BINARY_INTEGER;
 	TYPE purchase_items_record_t IS RECORD ( purchaseid INTEGER, productid INTEGER, count INTEGER);
 	TYPE purchase_items_t IS TABLE OF purchase_items_record_t;
 

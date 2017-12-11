@@ -228,15 +228,18 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 
 
-	PROCEDURE create_stock_change(sid IN INTEGER)
+	FUNCTION create_stock_change(sid IN INTEGER)
+	RETURN INTEGER
 	IS
+		returnId INTEGER;
 	BEGIN
 		INSERT INTO stockChanges
 		VALUES (
 			null,
 			sid,
 			SYSDATE
-		);
+		) RETURNING stockId INTO returnId;
+		RETURN returnId;
 	END create_stock_change;
 
 	PROCEDURE create_stock_change_item(sid IN INTEGER, pid IN INTEGER, c IN INTEGER, mdate IN DATE)
@@ -261,7 +264,8 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 
 	FUNCTION get_shop_stock(shopId IN INTEGER) RETURN stock_report_t
 	IS
-		res stock_report_t;
+		res stock_report_t := stock_report_t();
+		rec stock_report_record_t;
 		i BINARY_INTEGER := 0;
 		CURSOR c1 IS
 			SELECT shopStock.productId "productId", SUM(shopStock.count) OVER (PARTITION BY shopStock.productId) "count"
@@ -279,8 +283,10 @@ CREATE OR REPLACE PACKAGE BODY fivey AS
 		OPEN c1;
 		LOOP
 			i := i + 1;
-			FETCH c1 INTO res(i);
+			FETCH c1 INTO rec;
 			EXIT WHEN c1%NOTFOUND;
+			res.extend(1);
+			res(i) := stock_report_object_t(rec.productId, rec.count);
 		END LOOP;
 		CLOSE c1;
 		RETURN res;
